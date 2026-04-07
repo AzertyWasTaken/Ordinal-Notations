@@ -12,7 +12,7 @@ export const milestones = new Map([
 
 // Stringify
 
-export function stringify(ord) {
+export function parse(ord) {
     let str = "";
     for (let i = 0; i < ord.length; i += 2) {
         str += `[${ord[i]},${ord[i + 1]}]`
@@ -22,9 +22,9 @@ export function stringify(ord) {
 
 // Explorer
 
-export function isSucc(ord) {
-    return ord.length > 0 && ord.at(-1)[0] === 0;
-}
+export function isZero(ord) {return ord.length === 0;}
+
+export function isSucc(ord) {return ord.at(-2) === 0;}
 
 export function rank(a, b) {
     for (let i = 0; i < Math.min(a.length, b.length); i++) {
@@ -45,4 +45,4 @@ export function expand(ord, num) {
     return ord;
 }
 
-log(stringify(expand([4,1,3,3], 3)));
+log(parse(expand([4,1,3,3], 3)));
