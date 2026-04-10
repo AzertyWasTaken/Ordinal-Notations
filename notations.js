@@ -23,6 +23,7 @@ export const NOTATIONS = {
         "sequence": {name: "Sequence"},
         "addressSequence": {name: "Address Sequence"},
         "hydra": {name: "Hydra"},
+        "binaryShiftedSequence": {name: "Binary Shifted Sequence"},
 
         "wormSequence": {name: "Worm Sequence"},
         "wormHydra": {name: "Worm Hydra"},
@@ -34,6 +35,7 @@ export const NOTATIONS = {
 
     "3_p(Ww)": {
         "sequenceHydra": {name: "Sequence Hydra"},
+        "pointerPairSequence": {name: "Pointer Pair Sequence"},
         "hyperSequence": {name: "Hyper Sequence"},
         "pairSequence": {name: "Pair Sequence"},
         "hyperHydra": {name: "Hyper Hydra"},
