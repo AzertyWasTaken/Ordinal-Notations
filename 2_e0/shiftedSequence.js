@@ -54,8 +54,8 @@ function getParent(ord, head, root = ord.length) {
     return root;
 }
 
-function search(ord, head, top) {
-    let mark, root = ord.length;
+function search(ord, head, top, root) {
+    let mark = ord.length;
     do {
         root = mark;
         mark = getParent(ord, top, mark);

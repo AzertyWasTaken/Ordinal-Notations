@@ -27,6 +27,8 @@ The lenght of a script is the number of nonempty lines in the explorer and expan
 - Time complexity must be optimal
 - Parsed notations must **not** contain spaces
 - Ignore zero expansion
+- **No** recursion
+- Split long functions
 
 ### Formatting
 
@@ -36,6 +38,8 @@ The lenght of a script is the number of nonempty lines in the explorer and expan
 - Each function must **not** nest while and for loops
 - Merge similar functions
 - Write shorthands for frequently used variables
+- Avoid more than 64 characters per line
+- Each instruction must end with a semicolon
 
 ## Accepted notations
 
@@ -57,37 +61,43 @@ The lenght of a script is the number of nonempty lines in the explorer and expan
 
 | Name | Definition |
 | - | - |
-| array | Sequence with fixed length
+| address | Each item encodes its parent position
+| array | Array with fixed length
 | binary | Uses only two symbols
-| index | Uses pair arrays to represent index
-| nested | Sequence that can contain sequences
+| double sided | Can expand in both sides
+| hyper | Meta sequence property
+| index | Uses a pair to represent a number index
 | number | Unbounded symbols count
-| pair | Array with 2 entries
+| pair | Each items has a pair
+| pointer | Each item encodes its distance with its parent
+| sequence | Equivalent to nested worm or tree
 | unary | Uses only a single symbol
-| worm | Sequence with variable length
+| worm | Array with variable length
 
 ## Variables
 
 | Name | Definition
 | - | -
 | a, b | Used in binary operations
+| func | Function
 | head | Last item of a sequence
 | num | Integer
-| ord | Ordinal
-| pos | Position of an item
-| pow, tet | Power of an ordinal
-| sep | Array separator
-| root | Parent of the sequence *head*
-| part | Slice from the root to the end of a sequence
 | offset | Value difference between two sequence items
+| ord | Ordinal
+| parent | Parent of a sequence head
+| part | Slice from the root to the end of a sequence
+| root | Root of a sequence
+| top | Last item of a head
+| type | Uncountable level
 
 ## Functions
 
 | Name | Definition
 | - | -
 | `fill(ord, num, val)` | Push *val* to *ord* *num* times
-| `search(ord)` | Search the position of an item of an array
-| `grow(num, tet)` | Create a degenerate tree
+| `getParent(ord, root)` | Search the parent of *root* item of *ord*
+| `search(ord)` | Search the root of an array
+| `trim(ord, func)` | Trim the end of a sequence
 
 # Notations complexity
 
@@ -98,29 +108,35 @@ The complexity is the tokens count in the expansion and limit sections.
 | Ordinal | Notation | Complexity
 | - | - | -
 | ω | number | 30
-| ω | unaryWorm | 55
+| ω | unaryWorm | 60
 | ω^2 | pairNumber | 60
-| ω^ω | worm | 65
-| ω^ω | indexArray | 100
-| ω^ω | array | 120
-| ω^ω | binaryArray | 155
-| ω^ω^ω | doubleSidedWorm | 195
-| ε0 | pointerSequence | 135
-| ε0 | shortSequence | 145
-| ε0 | sequence | 155
-| ε0 | addressSequence | 160
+| ω^ω | worm | 70
+| ω^ω | indexArray | 105
+| ω^ω | array | 125
+| ω^ω | binaryArray | 160
+| ω^ω^ω | doubleSidedWorm | 200
+| ε0 | pointerSequence | 140
+| ε0 | shortSequence | 150
+| ε0 | sequence | 160
+| ε0 | addressSequence | 165
 | ε0 | hydra | 190
-| εω | wormSequence | 195
+| ε0 | binaryShiftedSequence | 240
+| εω | wormSequence | 200
 | εω | wormHydra | 210
-| φ(ω,0) | extendedSequence | 205
-| ψ(Ωω) | sequenceHydra | 245
+| φ(ω,0) | extendedSequence | 210
+| Γ0 | shiftedSequence | 335
+| ψ(Ωω) | sequenceHydra | 270
+| ψ(Ωω) | pointerPairSequence | 300
+| ψ(Ωω) | hyperSequence | 310
+| ψ(Ωω) | pairSequence | 320
+| ψ(Ωω) | hyperHydra | 385
 
 ## Milestones
 
 | Milestone | Notation | Complexity
 | - | - | -
 | ω | number | 30
-| ω^ω | worm | 65
-| ε0 | pointerSequence | 135
-| φ(ω,0) | extendedSequence | 205
-| ψ(Ωω) | sequenceHydra | 245
+| ω^ω | worm | 70
+| ε0 | pointerSequence | 140
+| φ(ω,0) | extendedSequence | 210
+| ψ(Ωω) | sequenceHydra | 270

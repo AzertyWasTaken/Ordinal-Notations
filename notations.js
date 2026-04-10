@@ -1,9 +1,9 @@
 "use strict";
-export const DEFAULT_CATEGORY = "_w";
+export const DEFAULT_CATEGORY = "1_w";
 export const DEFAULT_NOTATION = "number";
 
 export const NOTATIONS = {
-    "_w": {
+    "1_w": {
         "number": {name: "Number"},
         "unaryWorm": {name: "Unary Worm"},
 
@@ -17,7 +17,7 @@ export const NOTATIONS = {
         "doubleSidedWorm": {name: "Double Sided Worm"},
     },
 
-    "_e0": {
+    "2_e0": {
         "pointerSequence": {name: "Pointer Sequence"},
         "shortSequence": {name: "Short Sequence"},
         "sequence": {name: "Sequence"},
@@ -28,9 +28,14 @@ export const NOTATIONS = {
         "wormHydra": {name: "Worm Hydra"},
 
         "extendedSequence": {name: "Extended Sequence"},
+
+        "shiftedSequence": {name: "Shifted Sequence"},
     },
 
-    "_p(Ww)": {
+    "3_p(Ww)": {
         "sequenceHydra": {name: "Sequence Hydra"},
+        "hyperSequence": {name: "Hyper Sequence"},
+        "pairSequence": {name: "Pair Sequence"},
+        "hyperHydra": {name: "Hyper Hydra"},
     }
 };
