@@ -1,6 +1,7 @@
 "use strict";
 import {limit} from "../utils.js";
 import {fixModule} from "../ordModule.js";
+import {log} from "../log.js";
 
 export function* createLngi(mod, maxLength, start, end, offset) {
     const sModule = fixModule(mod);
@@ -27,11 +28,11 @@ export function* createLngi(mod, maxLength, start, end, offset) {
 
                 yield* expand(newOrd, newLength, first ?? lowerBound);
 
-                yield {type: "entry", ord: newOrd, str: sModule.parse};
+                yield {type: "entry", ord: newOrd, str: sModule.unparse};
                 first = newOrd;
 
             } else if (counter > 4) {
-                yield {type: "error", prev: lowerBound, curr: newOrd, next: ord, str: sModule.parse};
+                yield {type: "error", prev: lowerBound, curr: newOrd, next: ord, str: sModule.unparse};
                 return;
             }
 
@@ -43,5 +44,5 @@ export function* createLngi(mod, maxLength, start, end, offset) {
 
     yield* expand(end, maxLength, start);
 
-    yield {type: "entry", ord: limit, str: sModule.parse};
+    yield {type: "entry", ord: limit, str: sModule.unparse};
 }

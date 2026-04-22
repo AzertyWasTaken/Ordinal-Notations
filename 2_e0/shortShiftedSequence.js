@@ -91,7 +91,4 @@ export function expand(ord, num) {
 
 // Test
 
-log(unparse(expand([0,0,1,1,1,0,1,1], 3)));
-log(unparse(expand([0,0,2], 3)));
-log(unparse(expand([0,0,2,1,2,1,2], 3)));
-log(unparse(expand([0,0,2,2,1,2,2], 3)));
+log(unparse(expand([0,0,3,3,2,3,3], 3)));

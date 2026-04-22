@@ -21,7 +21,7 @@ export function unparse(ord) {return `(${ord.join(",")})`;}
 export function isZero(ord) {return ord.length === 0;}
 
 export function isSucc(ord) {
-    return ord.at(-1) && ord.at(-1) === ord.at(-2);
+    return ord.length > 0 && ord.at(-1) === ord.at(-2);
 }
 
 export function rank(a, b) {

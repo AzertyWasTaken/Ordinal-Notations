@@ -30,6 +30,7 @@ export const NOTATIONS = {
         "wormHydra": {name: "Worm Hydra"},
 
         "extendedSequence": {name: "Extended Sequence"},
+        "pointerExtendedSequence": {name: "Pointer Extended Sequence"},
 
         "shiftedSequence": {name: "Shifted Sequence"},
         "shortShiftedSequence": {name: "Short Shifted Sequence"},
@@ -47,5 +48,7 @@ export const NOTATIONS = {
         "shiftedSequenceHydra": {name: "Shifted Sequence Hydra"},
 
         "extendedSequenceHydra": {name: "Extended Sequence Hydra"},
+
+        "hyperSequenceHydra": {name: "Hyper Sequence Hydra"},
     }
 };

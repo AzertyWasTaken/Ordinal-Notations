@@ -78,11 +78,11 @@ export function expand(ord, num) {
         const root2 = ord.length - type * 2 - 2;
         const part = ord.slice(root2 >= 0 ? root2 : root);
     
-        const asc = root2 >= 0 ?
-        () => ascend(part, () => head, type + 1) :
-        () => ascend(part, (j) => j + head + 1, head + 1)
+        const [first, offset] = root2 >= 0 ?
+        [() => head, type + 1] :
+        [(j) => j + head + 1, head + 1];
 
-        fill(ord, num, asc);
+        fill(ord, num, () => ascend(part, first, offset));
     }
     return ord;
 }

@@ -16,17 +16,23 @@ export const milestones = new Map([
     ["φ(ω,0)", [1,2,2,1]],
     ["Γ0", [1,2,2,2]],
     ["ψ(ε{Ω+1})", [1,2,3]],
-    ["ψ(Ωω)", [1,3]],
-    ["ψ(Λ)", [1,3,3,2,0,0,1]],
-    ["ψ(Iω)", [1,3,3,3]],
-    ["ψ(I(ω,0))", [1,3,3,3,0,1]],
-    ["ψ(ε{M+1})", [1,3,3,3,0,2,3]],
-    ["ψ(Mω)", [1,3,3,3,0,3]],
-    ["ψ(M(ω;0))", [1,3,3,3,1]],
-    ["ψ(Kω)", [1,3,3,3,3]],
-    ["ψ(ε{T+1})", [1,3,4]],
-    ["ψ(Tω)", [1,4]],
-    ["ψ(T[ω])", limit],
+    ["ψ(Ωω)", [1,2,4]],
+    ["ψ(Λ)", [1,2,4,4,3,0,0,1]],
+    ["ψ(Iω)", [1,2,4,4,4]],
+    ["ψ(I(ω,0))", [1,2,4,4,4,0,1]],
+    ["ψ(ε{M+1})", [1,2,4,4,4,0,3,4]],
+    ["ψ(Mω)", [1,2,4,4,4,0,4]],
+    ["ψ(M(ω;0))", [1,2,4,4,4,1]],
+    ["ψ(Kω)", [1,2,4,4,4,4]],
+    ["ψ(ε{T+1})", [1,2,4,5]],
+    ["ψ(Tω)", [1,2,4,6]],
+    ["ψ(T[ω])", [1,2,4,6,1]],
+    ["ψ(T[1:;0]ω)", [1,2,4,6,6]],
+    ["ψ(T[1:;;0]ω)", [1,2,4,6,8]],
+    ["ψ(T[1:{ω}0]ω)", [1,2,4,7]],
+    ["ψ(T[1{1{*ω}0}0])", [1,2,4,7,10]],
+    ["ψ(T[1[ω[[1]]0]0])", [1,2,4,7,11]],
+    ["ψ(T[1[0]<ω>0])", limit],
 ]);
 
 // Unparse
@@ -102,10 +108,20 @@ function getParent(ord, root = ord.length) {
     return root;
 }
 
-function search(ord, head, root) {
+function getSubParent(ord, head, root) {
     while (ord[root] >= head) {
         root = getParent(ord, root);
     }
+    return root;
+}
+
+function search(ord, offset, root) {
+    let mark = root;
+    do {
+        root = mark;
+        mark = getSubParent(ord, ord[root], root);
+    }
+    while (ord[root] - ord[mark] >= offset);
     return root;
 }
 
@@ -121,10 +137,14 @@ export function expand(ord, num) {
             fill(ord, num, () => part);
 
         } else {
-            const root = search(ord, head, parent);
-            const part = ord.slice(root);
+            const parent2 = getSubParent(ord, head, parent);
+            const type = head - ord[parent2];
 
-            const offset = head === 1 ? 0 : head - ord[root] - 1;
+            const root = type > 1 ?
+            search(ord, type, parent2) : parent2;
+
+            const part = ord.slice(root);
+            const offset = head - ord[root] - 1;
             const ascendMap = getAscendMap(part, head);
 
             fill(ord, num, () => ascend(part, offset, ascendMap));
@@ -137,4 +157,4 @@ export function expand(ord, num) {
 
 // Test
 
-log(unparse(expand([1,3,3,0,0,2,4,2,3,0,0,4,0,4], 3)));
+log(unparse(expand([1,2,4,6,2,0,0,0,6], 3)));

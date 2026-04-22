@@ -113,7 +113,7 @@ The complexity is the tokens count in the expansion and limit sections.
 | ω^ω | array | 125
 | ω^ω | binaryArray | 160
 | ω^ω^ω | doubleSidedWorm | 200
-| ε0 | pointerSequence | 145
+| ε0 | pointerSequence | 140
 | ε0 | shortSequence | 150
 | ε0 | sequence | 160
 | ε0 | addressSequence | 165
@@ -122,6 +122,7 @@ The complexity is the tokens count in the expansion and limit sections.
 | ε0 | binaryTreeSequence | 280
 | εω | wormSequence | 200
 | εω | wormHydra | 210
+| φ(ω,0) | pointerExtendedSequence | 170
 | φ(ω,0) | extendedSequence | 210
 | Γ0 | shiftedSequence | 335
 | Γ0 | shortShiftedSequence | 410
@@ -132,7 +133,8 @@ The complexity is the tokens count in the expansion and limit sections.
 | ψ(Ωω) | hyperHydra | 385
 | ψ(Λ) | extendedShiftedSequence | 515
 | ψ(Mω) | shiftedSequenceHydra | 480
-| ψ(T[ω]) | extendedSequenceHydra | 470
+| ψ(T[ω]) | extendedSequenceHydra | 465
+| ψ(T[1[0]<ω>0]) | hyperSequenceHydra | 545
 
 ### Milestones
 
@@ -140,7 +142,8 @@ The complexity is the tokens count in the expansion and limit sections.
 | - | - | -
 | ω | number | 30
 | ω^ω | worm | 70
-| ε0 | pointerSequence | 145
-| φ(ω,0) | extendedSequence | 210
+| ε0 | pointerSequence | 140
+| φ(ω,0) | pointerExtendedSequence | 170
 | ψ(Ωω) | sequenceHydra | 270
-| ψ(T[ω]) | extendedSequenceHydra | 470
+| ψ(T[ω]) | extendedSequenceHydra | 465
+| ψ(T[1[0]<ω>0]) | hyperSequenceHydra | 545

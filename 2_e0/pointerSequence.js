@@ -21,7 +21,7 @@ export function unparse(ord) {return `(${ord.join(",")})`;}
 export function isZero(ord) {return ord.length === 0;}
 
 export function isSucc(ord) {
-    return ord.at(-1) >= ord.length - 1;
+    return ord.at(-1) === ord.length - 1;
 }
 
 export function rank(a, b) {
@@ -53,8 +53,10 @@ export function expand(ord, num) {
     if (root >= 0) {
         const part = ord.slice(root);
 
-        fill(ord, num, () =>
-            part.fill(part[0] + head + 1, 0, 1));
+        fill(ord, num, () => {
+            part[0] += head + 1;
+            return part;
+        });
     }
     return ord;
 }

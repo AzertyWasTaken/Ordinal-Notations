@@ -5,7 +5,9 @@ import {createLngi} from "./autoLNGI.js";
 
 // Config
 
-const [CATEGORY, NOTATION] = ["_p(Ww)", "pointerPairSequence"];
+// const [CATEGORY, NOTATION] = ["Bonus", "AZOCF"];
+// const [CATEGORY, NOTATION] = ["0_TODO", "extendedSequenceHydra"];
+const [CATEGORY, NOTATION] = ["2_e0", "binaryTreeSequence"];
 const ORD_MODULE = await import(`../${CATEGORY}/${NOTATION}.js`);
 
 const LENGTH = 8;
@@ -42,7 +44,6 @@ function logError(res) {
 let count = 0;
 
 for (const res of createLngi(ORD_MODULE, LENGTH, START, END, offset)) {
-
     if (res.type === "error") {
         log("Error:");
         logError(res);
@@ -50,7 +51,6 @@ for (const res of createLngi(ORD_MODULE, LENGTH, START, END, offset)) {
     } else if (res.type === "entry") {
         if (OUTPUT_STR) {log(res.str(res.ord));}
         if (OUTPUT_JSON) {log(res.ord);}
-
         count++;
     }
 }

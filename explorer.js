@@ -58,7 +58,7 @@ function mountNode(ord, div, btn, container) {
 }
 
 function logError(newOrd, lowerBound) {
-    log("Error", unparse(newOrd), unparse(lowerBound));
+    log("Error", sModule.unparse(newOrd), sModule.unparse(lowerBound));
     log("JSON", newOrd, lowerBound);
 }
 
